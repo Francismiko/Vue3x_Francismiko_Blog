@@ -7,15 +7,18 @@
       <navLogo :text="logo" />
       <navSearch />
       <router-link @click="checkScreenHeight" to="/sponsor">
+        <navOptions :text="tag_6" />
+      </router-link>
+      <router-link @click="checkScreenHeight" to="">
         <navOptions :text="tag_5" />
       </router-link>
       <router-link @click="checkScreenHeight" to="">
         <navOptions :text="tag_4" />
       </router-link>
-      <router-link @click="checkScreenHeight" to="">
+      <router-link @click="checkScreenHeight" to="/exercise">
         <navOptions :text="tag_3" />
       </router-link>
-      <router-link @click="checkScreenHeight" to="/exercise">
+      <router-link @click="checkScreenHeight" to="/blogs">
         <navOptions :text="tag_2" />
       </router-link>
       <router-link @click="checkScreenHeight" to="/">
@@ -43,10 +46,11 @@ export default defineComponent({
     return {
       logo: "Francismiko",
       tag_1: "主页",
-      tag_2: "模拟刷题",
-      tag_3: "小工具",
-      tag_4: "资源",
-      tag_5: "赞助",
+      tag_2: "博客",
+      tag_3: "模拟刷题",
+      tag_4: "小工具",
+      tag_5: "资源",
+      tag_6: "赞助",
     };
   },
   methods: {

@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <button class="test" @click="test()">点击进行测试</button>
+  <div class="test">
+    <button @click="test()">点击进行测试</button>
+    <p>{{ demo }}</p>
   </div>
 </template>
 
@@ -10,6 +11,11 @@ import axios from "axios";
 
 export default defineComponent({
   components: {},
+  data: function () {
+    return {
+      demo: "",
+    };
+  },
   methods: {
     test() {
       axios({
@@ -17,6 +23,7 @@ export default defineComponent({
         url: "http://localhost:3000",
       }).then((res) => {
         console.log(res);
+        this.demo = res.data;
       });
     },
   },
@@ -28,6 +35,9 @@ export default defineComponent({
   position: absolute;
   top: 50%;
   left: 50%;
-  background-color: aqua;
+
+  p {
+    color: aliceblue;
+  }
 }
 </style>

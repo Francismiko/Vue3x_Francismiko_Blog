@@ -14,6 +14,10 @@ const router = createRouter({
       path: "/sponsor",
       component: () => import("../src/pages/SponsorPage.vue"),
     },
+    {
+      path: "/blogs",
+      component: () => import("../src/pages/BlogsPage.vue"),
+    },
   ],
 });
 export default router;
