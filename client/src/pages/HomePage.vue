@@ -32,6 +32,7 @@
       <p>666</p>
     </div>
   </div>
+  <indexFooter />
 </template>
 
 <script lang="ts">
@@ -42,6 +43,7 @@ import QQIcon from "@/components/Elements/QQIcon.vue";
 import TwitterIcon from "@/components/Elements/TwitterIcon.vue";
 import getMethods from "@/utils/getMethods.ts";
 import profilePhoto from "@/components/Elements/ProfilePhoto.vue";
+import indexFooter from "@/components/Footer/IndexFooter.vue";
 
 export default defineComponent({
   components: {
@@ -50,6 +52,7 @@ export default defineComponent({
     QQIcon,
     TwitterIcon,
     profilePhoto,
+    indexFooter,
   },
   data() {
     return {
