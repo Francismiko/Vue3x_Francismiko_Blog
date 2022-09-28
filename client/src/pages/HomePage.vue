@@ -1,6 +1,6 @@
 <template>
   <div class="default-container first-container">
-    <h1 class="default-font-style-head">www.Francismiko.top</h1>
+    <h1 class="default-font-style-head">Francismiko's 前端驿站</h1>
     <profilePhoto />
     <p class="default-font-style">
       本网站采用<a :href="Vue.url" target="_blank" class="default-link-style">{{
@@ -25,11 +25,11 @@
     </div>
   </div>
   <div class="default-container second-container">
-    <div class="second-container-box-1">
-      <p>123</p>
-    </div>
-    <div class="second-container-box-2">
-      <p>666</p>
+    <div class="glass-container">
+      <div class="second-container-box-1">
+        <musicPlayer />
+      </div>
+      <div class="second-container-box-2"></div>
     </div>
   </div>
   <indexFooter />
@@ -44,6 +44,7 @@ import TwitterIcon from "@/components/Elements/TwitterIcon.vue";
 import getMethods from "@/utils/getMethods.ts";
 import profilePhoto from "@/components/Elements/ProfilePhoto.vue";
 import indexFooter from "@/components/Footer/IndexFooter.vue";
+import musicPlayer from "@/components/MusicPlayer/Player/MusicPlayer.vue";
 
 export default defineComponent({
   components: {
@@ -53,6 +54,7 @@ export default defineComponent({
     TwitterIcon,
     profilePhoto,
     indexFooter,
+    musicPlayer,
   },
   data() {
     return {
@@ -104,7 +106,7 @@ export default defineComponent({
           } else {
             return;
           }
-        }, 20);
+        }, 15);
         // 节流阀
         this.wheelState = false;
         setTimeout(() => {
@@ -174,22 +176,34 @@ $default-font-line-height: 3rem;
 
 .first-container {
   padding: 8rem 25% 1rem 25%;
+  background-color: #0d1117;
 }
 
 .second-container {
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  grid-template-columns: 1fr 1fr;
-  padding: 10% 0;
-  background-color: #1a3358;
+  padding: 18vh 25vh 5vh 25vh;
 
-  .second-container-box-1 {
-    display: gird;
-  }
+  .glass-container {
+    display: grid;
+    width: 100%;
+    height: 100vh - 14vh * 2;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10rem;
+    background: rgba(255, 255, 255, 0.393);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
 
-  .second-container-box-2 {
-    display: inline-block;
+    .second-container-box-1 {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+    }
+    .second-container-box-2 {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 </style>
