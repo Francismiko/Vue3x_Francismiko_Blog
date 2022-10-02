@@ -22,7 +22,7 @@ const getMethods = {
     const randomList = [];
     while (randomList.length < needNum) {
       const num = Math.floor(Math.random() * allNum);
-      if (randomList.indexOf(num) == -1) {
+      if (randomList.indexOf(num) === -1) {
         randomList.push(num);
       }
     }

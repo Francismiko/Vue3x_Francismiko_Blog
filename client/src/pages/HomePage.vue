@@ -84,8 +84,6 @@ export default defineComponent({
     // 路由跳转后销毁监听器
     window.removeEventListener("wheel", this.wheeling);
   },
-  computed: {
-  },
   methods: {
     wheeling() {
       if (this.wheelState) {

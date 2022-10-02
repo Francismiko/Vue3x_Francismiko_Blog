@@ -1,4 +1,4 @@
-# psychics
+# Francismiko_Blog
 
 ## Project setup
 ```

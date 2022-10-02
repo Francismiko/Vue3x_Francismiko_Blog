@@ -4,6 +4,9 @@
       <source src="@/assets/audios/老人与海.mp3" />
     </audio>
     <div class="default-container">
+      <span class="span-col-3">
+        <el-progress :percentage="percentage" :show-text="false" />
+      </span>
       <span class="default-playerButton">
         <svg
           t="1664448896987"
@@ -98,18 +101,28 @@ export default defineComponent({
   components: {},
   data() {
     return {
-      playerState: false,
-      // 播放时为true
+      percentageTimer: 0, // 进度条定时器
+      playerState: false, // 播放时为true
+      percentage: 0,
     };
+  },
+  mounted() {
+    const audio = this.$refs.audio as any;
+    this.percentageTimer = window.setTimeout(() => {
+      this.percentage = (audio.currentTime / audio.duration) * 100;
+    }, 100);
+  },
+  unmounted() {
+    if (this.percentage) {
+      clearInterval(this.percentageTimer);
+    }
   },
   methods: {
     playMusic() {
-      const playerState = this.playerState;
+      const audio = this.$refs.audio as any;
       this.playerState = !this.playerState;
-      this.playerState
-        ? (this.$refs.audio as any).play()
-        : (this.$refs.audio as any).pause();
-      this.$emit("changeState", playerState);
+      this.playerState ? audio.play() : audio.pause();
+      this.$emit("changeState", this.playerState);
       // 向父组件传递播放的状态值
     },
   },
@@ -120,11 +133,15 @@ export default defineComponent({
 .default-container {
   display: grid;
   justify-content: center;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 5rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem 5rem;
   box-sizing: border-box;
   width: 100%;
-  padding: 0rem;
+  padding-top: 4rem;
+
+  .span-col-3 {
+    grid-column: span 3 / auto;
+  }
 
   .default-playerButton {
     :hover {

@@ -76,6 +76,7 @@ export default defineComponent({
   width: 100%;
   height: 4rem;
   padding: 0 3%;
-  background-color: #161b22;
+  background-color: #161b2283;
+  backdrop-filter: blur(6px);
 }
 </style>
