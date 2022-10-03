@@ -108,7 +108,7 @@ export default defineComponent({
   },
   mounted() {
     const audio = this.$refs.audio as any;
-    this.percentageTimer = window.setTimeout(() => {
+    this.percentageTimer = window.setInterval(() => {
       this.percentage = (audio.currentTime / audio.duration) * 100;
     }, 100);
   },
