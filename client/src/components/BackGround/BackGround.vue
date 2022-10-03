@@ -16,6 +16,6 @@ export default {};
   min-height: 100%;
   background-color: #0d1117;
   background-size: 100% 100%;
-  background-image: url("@/assets/images/background-img/dd6250eebd2ab5b9a7d206f9ae433ed4.jpeg");
+  background-image: url("@/assets/images/background-img/32b77da01a8324c2066c364485c96e3dcc151463_raw.jpg");
 }
 </style>

@@ -1,7 +1,10 @@
 <template>
   <div>
     <main class="default-container">
-      <div :class="{ rotateStyle: rotateState }" class="albumPhotoStyle"></div>
+      <div
+        :class="{ rotateStyle: $store.state.playerState }"
+        class="albumPhotoStyle"
+      ></div>
     </main>
   </div>
 </template>
@@ -10,9 +13,6 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  props: {
-    rotateState: Boolean
-  },
   components: {},
 });
 </script>

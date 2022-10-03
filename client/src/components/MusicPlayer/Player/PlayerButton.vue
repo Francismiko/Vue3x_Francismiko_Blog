@@ -26,7 +26,7 @@
         </svg>
       </span>
       <span
-        v-show="!playerState"
+        v-show="!$store.state.playerState"
         @click="playMusic"
         class="default-playerButton"
       >
@@ -48,7 +48,7 @@
         </svg>
       </span>
       <span
-        v-show="playerState"
+        v-show="$store.state.playerState"
         @click="playMusic"
         class="default-playerButton"
       >
@@ -95,14 +95,10 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  props: {
-    rotateState: Boolean,
-  },
   components: {},
   data() {
     return {
       percentageTimer: 0, // 进度条定时器
-      playerState: false, // 播放时为true
       percentage: 0,
     };
   },
@@ -120,10 +116,8 @@ export default defineComponent({
   methods: {
     playMusic() {
       const audio = this.$refs.audio as any;
-      this.playerState = !this.playerState;
-      this.playerState ? audio.play() : audio.pause();
-      this.$emit("changeState", this.playerState);
-      // 向父组件传递播放的状态值
+      this.$store.state.playerState = !this.$store.state.playerState;
+      this.$store.state.playerState ? audio.play() : audio.pause();
     },
   },
 });

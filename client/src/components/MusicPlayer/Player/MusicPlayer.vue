@@ -1,10 +1,10 @@
 <template>
   <div>
     <main class="default-container">
-      <AlbumPhoto :rotateState="rotateState" />
+      <AlbumPhoto />
     </main>
     <main class="default-container">
-      <PlayerButton @changeState="playMusic" />
+      <PlayerButton />
     </main>
   </div>
 </template>
@@ -20,16 +20,9 @@ export default defineComponent({
     AlbumPhoto,
   },
   data() {
-    return {
-      rotateState: false,
-    };
+    return {};
   },
-  methods: {
-    // $emit.changeState的方法
-    playMusic(playerState: boolean) {
-      this.rotateState = playerState;
-    },
-  },
+  methods: {},
 });
 </script>
 

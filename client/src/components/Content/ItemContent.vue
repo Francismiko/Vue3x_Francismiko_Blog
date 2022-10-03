@@ -1,6 +1,6 @@
 <template>
   <div class="Container">
-    <button @click="randomArray">随机试题</button>
+    <button>随机试题</button>
     <div v-if="showBool">
       <exItems
         v-for="array in array_List"
@@ -19,43 +19,40 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import exItems from "@/components/Content/Items/ex-Items.vue";
-import getMethods from "@/utils/getMethods.ts";
-
-const noRepeatRandomNumArray = getMethods.getNoRepeatRandomNumArray();
 
 export default defineComponent({
   components: {
     exItems,
   },
   methods: {
-    randomArray(): void {
-      setTimeout(() => {
-        // 将messages数据随机传入array_List
-        if (JSON.stringify(this.array_List[0]) == "{}") {
-          // stringify()方法判断是否为空对象
-          this.array_List[0] =
-            this.messages[noRepeatRandomNumArray(this.needNum, this.allNum)[0]];
-          for (let i = 1; i < this.needNum; i++) {
-            this.array_List.push(
-              this.messages[
-                noRepeatRandomNumArray(this.needNum, this.allNum)[i]
-              ]
-            );
-          }
-        } else {
-          for (let i = 0; i < this.needNum; i++) {
-            this.array_List[i] =
-              this.messages[
-                getMethods.getNoRepeatRandomNumArray(this.needNum, this.allNum)[
-                  i
-                ]
-              ];
-          }
-        }
-        console.log(this.array_List, "this.array_List");
-        this.showBool = true;
-      });
-    },
+    // randomArray(): void {
+    //   setTimeout(() => {
+    //     // 将messages数据随机传入array_List
+    //     if (JSON.stringify(this.array_List[0]) == "{}") {
+    //       // stringify()方法判断是否为空对象
+    //       this.array_List[0] =
+    //         this.messages[noRepeatRandomNumArray(this.needNum, this.allNum)[0]];
+    //       for (let i = 1; i < this.needNum; i++) {
+    //         this.array_List.push(
+    //           this.messages[
+    //             noRepeatRandomNumArray(this.needNum, this.allNum)[i]
+    //           ]
+    //         );
+    //       }
+    //     } else {
+    //       for (let i = 0; i < this.needNum; i++) {
+    //         this.array_List[i] =
+    //           this.messages[
+    //             getMethods.getNoRepeatRandomNumArray(this.needNum, this.allNum)[
+    //               i
+    //             ]
+    //           ];
+    //       }
+    //     }
+    //     console.log(this.array_List, "this.array_List");
+    //     this.showBool = true;
+    //   });
+    // },
   },
   data() {
     return {

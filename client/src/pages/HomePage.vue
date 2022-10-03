@@ -41,7 +41,6 @@ import GithubIcon from "@/components/Elements/GithubIcon.vue";
 import WechatIcon from "@/components/Elements/WechatIcon.vue";
 import QQIcon from "@/components/Elements/QQIcon.vue";
 import TwitterIcon from "@/components/Elements/TwitterIcon.vue";
-import getMethods from "@/utils/getMethods.ts";
 import ProfilePhoto from "@/components/Elements/ProfilePhoto.vue";
 import IndexFooter from "@/components/Footer/IndexFooter.vue";
 import MusicPlayer from "@/components/MusicPlayer/Player/MusicPlayer.vue";
@@ -87,22 +86,22 @@ export default defineComponent({
   methods: {
     wheeling() {
       if (this.wheelState) {
-        let oldScrollTop: number = getMethods.getScrollTop();
+        let oldScrollTop: number = window.pageYOffset;
         let newScrollTop: number;
         document.body.style.overflow = "hidden";
         setTimeout(() => {
-          newScrollTop = getMethods.getScrollTop();
+          newScrollTop = window.pageYOffset;
           let scrollStep: number = newScrollTop - oldScrollTop;
           if (scrollStep < 0) {
             // 上滚
             window.scrollTo({
-              top: newScrollTop - getMethods.getScreenHeight(),
+              top: newScrollTop - window.innerHeight,
               behavior: "smooth",
             });
           } else if (scrollStep > 0) {
             // 下滚
             window.scrollTo({
-              top: newScrollTop + getMethods.getScreenHeight(),
+              top: newScrollTop + window.innerHeight,
               behavior: "smooth",
             });
           } else {
@@ -182,12 +181,13 @@ $default-font-line-height: 3rem;
 }
 
 .second-container {
-  padding: 12vh 25vh 8vh 25vh;
+  padding: 16vh 30vh 8vh 30vh;
 
   .glass-container {
     display: grid;
+    box-sizing: border-box;
     width: 100%;
-    height: 100vh - 10vh * 2;
+    height: 100vh - 12vh * 2;
     align-items: center;
     justify-items: center;
     grid-template-columns: 1fr 1fr;
@@ -195,6 +195,7 @@ $default-font-line-height: 3rem;
     background: rgba(255, 255, 255, 0.393);
     backdrop-filter: blur(10px);
     border-radius: 10px;
+    border: 10px solid rgba(25, 25, 25, 0.792);
 
     .second-container-box-1 {
       display: inline-block;
