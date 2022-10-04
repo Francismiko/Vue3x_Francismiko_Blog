@@ -103,7 +103,7 @@ export default defineComponent({
     };
   },
   mounted() {
-    const audio = this.$refs.audio as any;
+    const audio = this.$refs.audio as HTMLAudioElement;
     this.percentageTimer = window.setInterval(() => {
       this.percentage = (audio.currentTime / audio.duration) * 100;
     }, 100);
@@ -115,7 +115,7 @@ export default defineComponent({
   },
   methods: {
     playMusic() {
-      const audio = this.$refs.audio as any;
+      const audio = this.$refs.audio as HTMLAudioElement;
       this.$store.state.playerState = !this.$store.state.playerState;
       this.$store.state.playerState ? audio.play() : audio.pause();
     },
