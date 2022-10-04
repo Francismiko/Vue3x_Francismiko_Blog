@@ -46,8 +46,6 @@ import IndexFooter from "@/components/Footer/IndexFooter.vue";
 import MusicPlayer from "@/components/MusicPlayer/Player/MusicPlayer.vue";
 
 export default defineComponent({
-  inheritAttrs: false,
-
   components: {
     GithubIcon,
     WechatIcon,

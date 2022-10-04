@@ -65,7 +65,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-/deep/.fa-github {
+:deep(.fa-github) {
   font-size: 2rem;
 }
 .navContainer {

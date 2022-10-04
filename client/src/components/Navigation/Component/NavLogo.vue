@@ -7,11 +7,13 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   props: {
     text: String,
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

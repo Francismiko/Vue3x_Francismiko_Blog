@@ -11,9 +11,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-export default defineComponent({
-  components: {},
-});
+export default defineComponent({});
 </script>
 
 <style lang="scss" scoped>

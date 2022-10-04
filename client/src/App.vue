@@ -6,8 +6,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import BackGround from "../src/components/BackGround/BackGround.vue";
-import NavigationBar from "../src/components/Navigation/NavigationBar.vue";
+import BackGround from "@/components/BackGround/BackGround.vue";
+import NavigationBar from "@/components/Navigation/NavigationBar.vue";
 
 export default defineComponent({
   name: 'App',
@@ -19,5 +19,5 @@ export default defineComponent({
 </script>
 
 <style>
-@import "../src/assets/css/init.css";
+@import "@/assets/css/init.css";
 </style>

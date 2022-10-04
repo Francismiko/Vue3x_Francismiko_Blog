@@ -1,6 +1,8 @@
 /* eslint-disable */
-import { ComponentCustomProperties } from "@/shims-vue";
+import { ComponentCustomProperties } from "@/vite-env";
 import { Store } from "vuex";
+
+/// <reference types="vite/client" />
 
 declare module "@vue/runtime-core" {
   // declare your own store states
@@ -19,5 +21,3 @@ declare module "*.vue" {
   const component: DefineComponent<{}, {}, any>;
   export default component;
 }
-
-declare module "@/router.ts";

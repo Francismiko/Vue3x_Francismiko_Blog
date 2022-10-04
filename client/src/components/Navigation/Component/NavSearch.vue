@@ -31,18 +31,18 @@ const input = ref("");
     width: 16rem;
   }
 
-  /deep/.el-input__suffix {
+  :deep(.el-input__suffix) {
     :hover {
       cursor: pointer;
     }
   }
 
-  /deep/.el-input__inner {
+  :deep(.el-input__inner) {
     transition: all 0.5s ease-in-out;
     color: rgb(225, 225, 225);
   }
 
-  /deep/.el-input__wrapper {
+  :deep(.el-input__wrapper) {
     background-color: transparent !important;
     box-shadow: 0 0 0 1px #4c895e;
     &:hover {
@@ -50,7 +50,7 @@ const input = ref("");
     }
   }
 
-  /deep/.is-focus {
+  :deep(.is-focus) {
     box-shadow: 0 0 0px 1px #85eea7;
   }
 }
