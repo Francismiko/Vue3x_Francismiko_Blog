@@ -1,25 +1,21 @@
-const express = require("express");
+const Koa = require('koa');
+const Router = require('koa-router'); // 路由
+const cors = require("koa2-cors");// cors跨域
+const static = require("koa-static");// 处理静态文件
+const logger = require('koa-logger');// 日志打印
 const config = require("./config");
-const morgan = require("morgan");
-const cors = require("cors");
-require("./model")
+const apiRouter = require("./routes");
+require("./model");
 
-const app = express();
+const app = new Koa();
+const router = new Router();
 
-app.use(express.static("./"));
-app.use(express.json());
-app.use(morgan("dev"));
+// 挂载二级路由
+router.use('/api', apiRouter.routes());
+
 app.use(cors());
-app.use("/api", require("./routes"));
-
-app.get("/", (req, res) => {
-    res.send('get ok');
-})
-
-app.post("/", (req, res) => {
-    console.log(req.body);
-    res.send('post ok');
-})
+app.use(logger());
+app.use(router.routes());
 
 app.listen(config.app.port, () => {
     console.log(`Running on http://localhost:${config.app.port}`);
