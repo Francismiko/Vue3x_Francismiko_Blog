@@ -1,5 +1,5 @@
 <template>
-  <div class="default-container first-container">
+  <span class="first-container">
     <h1 class="default-font-style-head">Francismiko's 前端驿站</h1>
     <ProfilePhoto />
     <p class="default-font-style">
@@ -17,21 +17,28 @@
       >、'ES6'、'Nuxt3'、'SCSS'、'Node.js'参考文档内容供来访者学习。菜鸡练手之作，有不足之处望多多包涵
     </p>
     <p class="default-font-style">联系方式：1485059943@qq.com</p>
-    <div class="default-icon-box">
+    <div class="icon-box">
       <GithubIcon />
       <WechatIcon />
       <QQIcon />
       <TwitterIcon />
     </div>
-  </div>
-  <div class="default-container second-container">
+  </span>
+  <span class="second-container">
     <div class="glass-container">
       <div class="second-container-box-1">
         <MusicPlayer />
       </div>
-      <div class="second-container-box-2"></div>
+      <div class="second-container-box-2">
+        <div class="itemList-container">
+          <MusicLists />
+        </div>
+      </div>
     </div>
-  </div>
+  </span>
+  <span class="third-container">
+    
+  </span>
   <IndexFooter />
 </template>
 
@@ -44,6 +51,7 @@ import TwitterIcon from "@/components/Elements/TwitterIcon.vue";
 import ProfilePhoto from "@/components/Elements/ProfilePhoto.vue";
 import IndexFooter from "@/components/Footer/IndexFooter.vue";
 import MusicPlayer from "@/components/MusicPlayer/Player/MusicPlayer.vue";
+import MusicLists from "@/components/MusicPlayer/Lists/MusicLists.vue";
 
 export default defineComponent({
   components: {
@@ -54,6 +62,7 @@ export default defineComponent({
     ProfilePhoto,
     IndexFooter,
     MusicPlayer,
+    MusicLists,
   },
   data() {
     return {
@@ -73,13 +82,13 @@ export default defineComponent({
     };
   },
   mounted() {
-    if (this.$route.path == "/")
-      // 主页监听鼠标滚轮监听器
-      window.addEventListener("wheel", this.wheeling);
+    // if (this.$route.path == "/")
+    //   // 主页监听鼠标滚轮监听器
+    //   window.addEventListener("wheel", this.wheeling);
   },
   beforeRouteLeave() {
-    // 路由跳转后销毁监听器
-    window.removeEventListener("wheel", this.wheeling);
+    // // 路由跳转后销毁监听器
+    // window.removeEventListener("wheel", this.wheeling);
   },
   methods: {
     wheeling() {
@@ -125,7 +134,7 @@ $default-font-size-head: 2.8rem;
 $default-font-weight-head: 700;
 $default-font-line-height: 3rem;
 
-.default-container {
+@mixin default-container() {
   display: block;
   box-sizing: border-box;
   width: 100%;
@@ -162,8 +171,14 @@ $default-font-line-height: 3rem;
     font-weight: $default-font-weight;
     font-size: $default-font-size;
   }
+}
 
-  .default-icon-box {
+.first-container {
+  background-color:#0d1117;
+  @include default-container();
+  padding: 8rem 25% 1rem 25%;
+
+  .icon-box {
     display: grid;
     align-items: center;
     justify-items: center;
@@ -173,12 +188,8 @@ $default-font-line-height: 3rem;
   }
 }
 
-.first-container {
-  padding: 8rem 25% 1rem 25%;
-  background-color: #0d1117;
-}
-
 .second-container {
+  @include default-container();
   padding: 16vh 30vh 8vh 30vh;
 
   .glass-container {
@@ -193,7 +204,8 @@ $default-font-line-height: 3rem;
     background: rgba(255, 255, 255, 0.393);
     backdrop-filter: blur(10px);
     border-radius: 10px;
-    border: 10px solid rgba(25, 25, 25, 0.792);
+    box-shadow: inset 7px 7px 14px rgba(255, 255, 255, 0.393),
+                inset -7px -7px 14px #ffffffc5;
 
     .second-container-box-1 {
       display: inline-block;
@@ -202,9 +214,28 @@ $default-font-line-height: 3rem;
     }
     .second-container-box-2 {
       display: inline-block;
+      box-sizing: border-box;
       width: 100%;
       height: 100%;
+      padding: 2rem 4rem 2rem 2rem;
+      .itemList-container {
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        padding: 1rem 2rem 0 3rem;
+        border-radius: 4px;
+        background: #e1e1e1;
+        box-shadow: inset 6px 6px 12px #757575,
+                    inset -6px -6px 12px #ffffff99;
+      }
     }
   }
+}
+
+.third-container {
+  @include default-container();
+  padding: 16vh 30vh 8vh 30vh;
+  background: linear-gradient(to bottom, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 </style>

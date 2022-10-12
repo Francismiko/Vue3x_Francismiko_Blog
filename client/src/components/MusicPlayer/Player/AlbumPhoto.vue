@@ -1,37 +1,53 @@
 <template>
   <div>
     <main class="default-container">
-      <div
-        :class="{ rotateStyle: $store.state.playerState }"
-        class="albumPhotoStyle"
-      ></div>
+      <div :class="{ rotateStyle: store.music.playerState }" class="albumPhotoStyle">
+        <img/>
+        <div class="red-core"></div>
+      </div>
     </main>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useStore } from "@/store/index.ts";
 
 export default defineComponent({
   components: {},
+  setup() {
+    const store = useStore();
+    return {
+      store
+    }
+  },
 });
 </script>
 
 <style lang="scss" scoped>
 .default-container {
-  display: inline-block;
+  display: flex;
   width: 100%;
   height: auto;
   padding: 20% 0%;
   margin: 0 auto;
 
   .albumPhotoStyle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 12rem;
     height: 12rem;
     border-radius: 50%;
-    border: 20px solid rgb(32, 32, 32);
-    background-image: url("@/assets/images/music-img/老人与海.jpg");
-    background-size: cover;
+    border: 1rem solid rgb(32, 32, 32);
+    background-color: black;
+
+    .red-core {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: rgb(194, 29, 29);
+  }
   }
 
   .rotateStyle {

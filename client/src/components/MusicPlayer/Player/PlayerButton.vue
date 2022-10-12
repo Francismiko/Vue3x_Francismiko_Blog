@@ -1,7 +1,7 @@
 <template>
   <div>
     <audio ref="audio">
-      <source src="@/assets/audios/老人与海.mp3" />
+      <source src="" />
     </audio>
     <div class="default-container">
       <span class="span-col-3">
@@ -26,7 +26,7 @@
         </svg>
       </span>
       <span
-        v-show="!$store.state.playerState"
+        v-show="!store.music.isPlay"
         @click="playMusic"
         class="default-playerButton"
       >
@@ -48,7 +48,7 @@
         </svg>
       </span>
       <span
-        v-show="$store.state.playerState"
+        v-show="store.music.isPlay"
         @click="playMusic"
         class="default-playerButton"
       >
@@ -93,9 +93,16 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useStore } from "@/store/index.ts";
 
 export default defineComponent({
   components: {},
+  setup() {
+    const store = useStore();
+    return {
+      store
+    }
+  },
   data() {
     return {
       percentageTimer: 0, // 进度条定时器
@@ -106,7 +113,7 @@ export default defineComponent({
     const audio = this.$refs.audio as HTMLAudioElement;
     this.percentageTimer = window.setInterval(() => {
       this.percentage = (audio.currentTime / audio.duration) * 100;
-    }, 100);
+    }, 500);
   },
   unmounted() {
     if (this.percentage) {
@@ -116,8 +123,16 @@ export default defineComponent({
   methods: {
     playMusic() {
       const audio = this.$refs.audio as HTMLAudioElement;
-      this.$store.state.playerState = !this.$store.state.playerState;
-      this.$store.state.playerState ? audio.play() : audio.pause();
+
+      // 更新store状态
+      this.store.$state = {
+        music: {
+          isPlay: !this.store.music.isPlay,
+        }
+      };
+      console.log(this.store.music.isPlay);
+      
+      this.store.music.isPlay ? audio.play() : audio.pause();
     },
   },
 });

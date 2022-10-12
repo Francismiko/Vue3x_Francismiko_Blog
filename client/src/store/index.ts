@@ -1,16 +1,12 @@
-import { createStore } from "vuex";
+import { defineStore } from "pinia";
 
-const store = createStore({
-  plugins: [],
-  modules: {},
-  state() {
+export const useStore = defineStore("main", {
+  state: () => {
     return {
-      playerState: false, // 播放时为true
+      music: {
+        isPlay: false, // 播放时为true
+        ImgUrl: "",
+      },
     };
   },
-  mutations: {},
-  actions: {},
-  getters: {},
 });
-
-export default store;
