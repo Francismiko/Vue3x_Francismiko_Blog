@@ -130,8 +130,6 @@ export default defineComponent({
           isPlay: !this.store.music.isPlay,
         }
       };
-      console.log(this.store.music.isPlay);
-      
       this.store.music.isPlay ? audio.play() : audio.pause();
     },
   },
