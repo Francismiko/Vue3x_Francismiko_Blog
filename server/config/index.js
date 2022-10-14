@@ -1,10 +1,19 @@
-module.exports = {
-  app: {
-    port: process.env.PORT || 3000,
-  },
+const dotenv = require('dotenv');
+const env = process.env;
 
-  //数据库配置
-  db: {
-    url: process.env.MONGODB_URL || "mongodb://localhost:27017/Francismiko_Blog",
-  }
+dotenv.config();
+
+// 后端服务端口
+const app = {
+  port: env.PORT || 3000,
+}
+
+//数据库配置
+const db = {
+  url: env.MONGODB_URL + env.TABLE_NAME || "mongodb://localhost:27017",
+}
+
+module.exports = {
+  app,
+  db
 }

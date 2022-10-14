@@ -1,6 +1,6 @@
 const Router = require('koa-router');
 
-const router = new Router();
+const router = new Router({ prefix: '/api' });
 
 // api可用性测试
 router.get('/', (ctx) => {
@@ -12,15 +12,15 @@ router.post('/', (ctx) => {
 });
 
 router.put('/', (ctx) => {
-  return ctx.body = 'PUT IS OK';
+  ctx.body = 'PUT IS OK';
 });
 
 router.delete('/', (ctx) => {
-  return ctx.body = 'DELETE IS OK';
+  ctx.body = 'DELETE IS OK';
 });
 
 router.patch('/', (ctx) => {
-  return ctx.body = 'PATCH IS OK';
+  ctx.body = 'PATCH IS OK';
 });
 
 module.exports = router;
