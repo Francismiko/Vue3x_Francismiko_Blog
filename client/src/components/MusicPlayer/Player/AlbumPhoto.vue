@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="default-container">
-      <div class="albumPhotoStyle"></div>
-    </div>
+    <main class="default-container">
+      <div :class="{ rotateStyle: rotateState }" class="albumPhotoStyle"></div>
+    </main>
   </div>
 </template>
 
@@ -10,21 +10,40 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
+  props: {
+    rotateState: Boolean
+  },
   components: {},
 });
 </script>
 
 <style lang="scss" scoped>
 .default-container {
+  display: inline-block;
   width: 100%;
-  height: 50%;
+  height: auto;
+  padding: 20% 0%;
+  margin: 0 auto;
 
   .albumPhotoStyle {
-    width: 15rem;
-    height: 15rem;
+    width: 12rem;
+    height: 12rem;
     border-radius: 50%;
-    background-image: url('@/assets/images/music-img/老人与海.jpg');
+    border: 20px solid rgb(32, 32, 32);
+    background-image: url("@/assets/images/music-img/老人与海.jpg");
     background-size: cover;
+  }
+
+  .rotateStyle {
+    animation: rotate 25s linear infinite;
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
   }
 }
 </style>

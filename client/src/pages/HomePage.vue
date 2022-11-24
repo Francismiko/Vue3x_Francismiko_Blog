@@ -1,7 +1,7 @@
 <template>
   <div class="default-container first-container">
     <h1 class="default-font-style-head">Francismiko's 前端驿站</h1>
-    <profilePhoto />
+    <ProfilePhoto />
     <p class="default-font-style">
       本网站采用<a :href="Vue.url" target="_blank" class="default-link-style">{{
         Vue.name
@@ -27,12 +27,12 @@
   <div class="default-container second-container">
     <div class="glass-container">
       <div class="second-container-box-1">
-        <musicPlayer />
+        <MusicPlayer />
       </div>
       <div class="second-container-box-2"></div>
     </div>
   </div>
-  <indexFooter />
+  <IndexFooter />
 </template>
 
 <script lang="ts">
@@ -42,19 +42,21 @@ import WechatIcon from "@/components/Elements/WechatIcon.vue";
 import QQIcon from "@/components/Elements/QQIcon.vue";
 import TwitterIcon from "@/components/Elements/TwitterIcon.vue";
 import getMethods from "@/utils/getMethods.ts";
-import profilePhoto from "@/components/Elements/ProfilePhoto.vue";
-import indexFooter from "@/components/Footer/IndexFooter.vue";
-import musicPlayer from "@/components/MusicPlayer/Player/MusicPlayer.vue";
+import ProfilePhoto from "@/components/Elements/ProfilePhoto.vue";
+import IndexFooter from "@/components/Footer/IndexFooter.vue";
+import MusicPlayer from "@/components/MusicPlayer/Player/MusicPlayer.vue";
 
 export default defineComponent({
+  inheritAttrs: false,
+
   components: {
     GithubIcon,
     WechatIcon,
     QQIcon,
     TwitterIcon,
-    profilePhoto,
-    indexFooter,
-    musicPlayer,
+    ProfilePhoto,
+    IndexFooter,
+    MusicPlayer,
   },
   data() {
     return {
@@ -82,6 +84,8 @@ export default defineComponent({
     // 路由跳转后销毁监听器
     window.removeEventListener("wheel", this.wheeling);
   },
+  computed: {
+  },
   methods: {
     wheeling() {
       if (this.wheelState) {
@@ -106,7 +110,7 @@ export default defineComponent({
           } else {
             return;
           }
-        }, 15);
+        }, 20);
         // 节流阀
         this.wheelState = false;
         setTimeout(() => {
@@ -180,12 +184,12 @@ $default-font-line-height: 3rem;
 }
 
 .second-container {
-  padding: 18vh 25vh 5vh 25vh;
+  padding: 12vh 25vh 8vh 25vh;
 
   .glass-container {
     display: grid;
     width: 100%;
-    height: 100vh - 14vh * 2;
+    height: 100vh - 10vh * 2;
     align-items: center;
     justify-items: center;
     grid-template-columns: 1fr 1fr;
