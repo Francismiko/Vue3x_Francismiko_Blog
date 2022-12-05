@@ -1,24 +1,8 @@
 # Francismiko_Blog
 
-## Project setup
-```
-npm install
-```
+## Francismiko的个人博客网站
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+网站域名: www.francismiko.top
 
-### Compiles and minifies for production
-```
-npm run build
-```
+未来陆行更新...
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
